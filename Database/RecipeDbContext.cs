@@ -30,6 +30,7 @@ public class RecipeDbContext(DbContextOptions<RecipeDbContext> options) : DbCont
             .HasKey(rf => new { rf.UserId, rf.RecipeId });
 
         modelBuilder.Entity<RecipeFavorite>()
+        
             .HasOne(rf => rf.User)
             .WithMany()
             .HasForeignKey(rf => rf.UserId)

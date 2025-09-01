@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "3KRLGn+cCYRmtB96ZR8c7p+bf0F3fGC6vm4wWiHRZVY=",
-  "Source": "Recipes",
-  "BasePath": "_content/Recipes",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"3KRLGn+cCYRmtB96ZR8c7p+bf0F3fGC6vm4wWiHRZVY=","Source":"Recipes","BasePath":"_content/Recipes","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

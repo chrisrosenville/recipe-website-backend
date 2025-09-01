@@ -246,21 +246,39 @@ public class UserController(
     }
 
     [HttpGet("{id}/recipes")]
-    public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipesByUserId(int id)
+    public async Task<ActionResult<PagedResult<Recipe>>> GetRecipesByUserId(
+        int id, 
+        [FromQuery] int page = 1, 
+        [FromQuery] int pageSize = 20)
     {
+        if (page < 1) page = 1;
+        if (pageSize < 1) pageSize = 20;
+        if (pageSize > 100) pageSize = 100; // Limit page size to prevent abuse
+
         var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
         if (user == null)
         {
             return NotFound("User not found.");
         }
 
+        var total = await _dbContext.Recipes.CountAsync(recipe => recipe.UserId == id);
         var userRecipes = await _dbContext.Recipes
             .Include(r => r.Category)
             .Where(recipe => recipe.UserId == id)
             .OrderByDescending(r => r.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
 
-        return Ok(userRecipes);
+        var result = new PagedResult<Recipe>
+        {
+            Page = page,
+            PageSize = pageSize,
+            Total = total,
+            Items = userRecipes
+        };
+
+        return Ok(result);
     }
 
     [HttpGet("{id}/favorites")]

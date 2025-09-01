@@ -15,12 +15,30 @@ public class RecipeController(RecipeDbContext dbContext) : ControllerBase
     private readonly RecipeDbContext _dbContext = dbContext;
 
     [HttpGet]
-    public async Task<IEnumerable<Recipe>> GetAllRecipes()
+    public async Task<ActionResult<PagedResult<Recipe>>> GetAllRecipes([FromQuery] int page = 1, [FromQuery] int pageSize = 12)
     {
-        return await _dbContext.Recipes
-        .Include(r => r.Category)
-        .Include(r => r.User)
-        .ToListAsync();
+        if (page < 1) page = 1;
+        if (pageSize < 1) pageSize = 12;
+        if (pageSize > 100) pageSize = 100; // Limit page size to prevent abuse
+
+        var total = await _dbContext.Recipes.CountAsync();
+        var recipes = await _dbContext.Recipes
+            .Include(r => r.Category)
+            .Include(r => r.User)
+            .OrderByDescending(r => r.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        var result = new PagedResult<Recipe>
+        {
+            Page = page,
+            PageSize = pageSize,
+            Total = total,
+            Items = recipes
+        };
+
+        return Ok(result);
     }
 
     [HttpGet("{id}")]

@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/christian/Dev/webshop-101/backend/Recipes/Recipes.csproj": {}
+    "C:\\Dev\\recipe-website\\backend\\Recipes.csproj": {}
   },
   "projects": {
-    "/Users/christian/Dev/webshop-101/backend/Recipes/Recipes.csproj": {
+    "C:\\Dev\\recipe-website\\backend\\Recipes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/christian/Dev/webshop-101/backend/Recipes/Recipes.csproj",
+        "projectUniqueName": "C:\\Dev\\recipe-website\\backend\\Recipes.csproj",
         "projectName": "Recipes",
-        "projectPath": "/Users/christian/Dev/webshop-101/backend/Recipes/Recipes.csproj",
-        "packagesPath": "/Users/christian/.nuget/packages/",
-        "outputPath": "/Users/christian/Dev/webshop-101/backend/Recipes/obj/",
+        "projectPath": "C:\\Dev\\recipe-website\\backend\\Recipes.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\recipe-website\\backend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/christian/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -90,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

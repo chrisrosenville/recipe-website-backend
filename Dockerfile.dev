@@ -1,11 +1,17 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0
 WORKDIR /app
 
+# Install PostgreSQL client for health checks
+RUN apt-get update && apt-get install -y postgresql-client && rm -rf /var/lib/apt/lists/*
+
 COPY ./Recipes.csproj ./
 RUN dotnet restore
 
 COPY . ./
 
+# Make the wait script executable
+RUN chmod +x wait-for-postgres.sh
+
 EXPOSE 8080
 
-CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:8080"]
+CMD ["./wait-for-postgres.sh", "postgres", "dotnet", "watch", "run", "--urls", "http://0.0.0.0:8080"]
